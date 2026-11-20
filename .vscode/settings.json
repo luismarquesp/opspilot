@@ -1,0 +1,44 @@
+{
+  "agent.commandAllowlist": [
+    "npm run",
+    "npm run test",
+    "npm test",
+    "npx tsc",
+    "node",
+    "git status",
+    "git diff",
+    "git add",
+    "git commit"
+  ],
+  "agent.commandDenylist": [
+    "rm -rf",
+    "sudo",
+    "git push --force",
+    "cat .env",
+    "type .env",
+    "Get-Content .env",
+    ".env"
+  ],
+  "chat.commandAllowlist": [
+    "npm run",
+    "npm run test",
+    "npm test",
+    "npx tsc",
+    "node",
+    "git status",
+    "git diff",
+    "git add",
+    "git commit"
+  ],
+  "chat.commandDenylist": [
+    "rm -rf",
+    "sudo",
+    "git push --force",
+    "cat .env",
+    "type .env",
+    "Get-Content .env"
+  ],
+  "agent.manualApproval": [
+    "git push"
+  ]
+}

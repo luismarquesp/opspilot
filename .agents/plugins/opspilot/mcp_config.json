@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "opspilot": {
+      "command": "node",
+      "args": [
+        "--import",
+        "tsx",
+        "src/mcp/server.ts"
+      ],
+      "cwd": "c:/Users/luism/OneDrive/Documentos/Pós graduação/Handsome/me/modulo04-agentes-autonomos/ops-pilot",
+      "env": {
+        "OPSPILOT_DB": "./data/opspilot.db"
+      }
+    }
+  }
+}

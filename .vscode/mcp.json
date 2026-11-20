@@ -1,0 +1,16 @@
+{
+    "mcpServers": {
+        "opspilot": {
+            "command": "node",
+            "args": [
+                "--import",
+                "tsx",
+                "src/mcp/server.ts"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "OPSPILOT_DB": "./data/opspilot.db"
+            }
+        }
+    }
+}
