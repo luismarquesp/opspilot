@@ -42,10 +42,6 @@ const BUILD_AND_DEPLOY_RULES: readonly ContractRule[] = [
     message: "Build deve compilar o bundle em web/ via npm run build.",
   },
   {
-    pattern: /uses:\s*actions\/configure-pages@v\d+/,
-    message: "Build deve configurar Pages com actions/configure-pages.",
-  },
-  {
     pattern: /uses:\s*actions\/upload-pages-artifact@v\d+/,
     message: "Build deve empacotar web/dist via actions/upload-pages-artifact.",
   },

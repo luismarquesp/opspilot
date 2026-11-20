@@ -71,7 +71,7 @@ node --import tsx --test "web/src/**/*.test.ts"  # Testes unitários puros do fr
 
 O workflow [.github/workflows/deploy.yml](.github/workflows/deploy.yml) automatiza a publicação do War Room (`web/dist`) no GitHub Pages com permissões mínimas (`contents: read`, `pages: write`, `id-token: write`) e controle de concorrência (`group: pages`):
 
-1. **Build (`build`)**: executa `npm ci` e `npm run build` dentro de `web/` (que também valida `tsc --noEmit`) e envia `web/dist` via `actions/configure-pages` e `actions/upload-pages-artifact`.
+1. **Build (`build`)**: executa `npm ci` e `npm run build` dentro de `web/` (que também valida `tsc --noEmit`) e envia `web/dist` via `actions/upload-pages-artifact`.
 2. **Deploy (`deploy`)**: publica o artefato no ambiente `github-pages` usando `actions/deploy-pages`, expondo a `page_url` publicada sob `/opspilot/`.
 
 ### Como ativar no repositório GitHub
