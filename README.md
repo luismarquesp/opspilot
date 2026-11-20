@@ -69,14 +69,14 @@ node --import tsx --test "web/src/**/*.test.ts"  # Testes unitários puros do fr
 
 ## Deploy do `web/` no GitHub Pages (GitHub Actions)
 
-O workflow [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml) automatiza a publicação do War Room (`web/dist`) no GitHub Pages com permissões mínimas (`contents: read`, `pages: write`, `id-token: write`) e controle de concorrência (`group: pages`):
+O workflow [.github/workflows/deploy.yml](.github/workflows/deploy.yml) automatiza a publicação do War Room (`web/dist`) no GitHub Pages com permissões mínimas (`contents: read`, `pages: write`, `id-token: write`) e controle de concorrência (`group: pages`):
 
-1. **Build (`build`)**: executa `npm --prefix web ci`, `npm --prefix web run typecheck`, `npm --prefix web run build` e publica `./web/dist` via `actions/configure-pages` e `actions/upload-pages-artifact`.
+1. **Build (`build`)**: executa `npm ci` e `npm run build` dentro de `web/` (que também valida `tsc --noEmit`) e envia `web/dist` via `actions/configure-pages` e `actions/upload-pages-artifact`.
 2. **Deploy (`deploy`)**: publica o artefato no ambiente `github-pages` usando `actions/deploy-pages`, expondo a `page_url` publicada sob `/opspilot/`.
 
 ### Como ativar no repositório GitHub
 
 1. Acesse **Settings → Pages → Build and deployment** no repositório.
 2. Em **Source**, selecione **GitHub Actions**.
-3. Faça push na branch `main` alterando `web/` (ou dispare manualmente via **Actions → Deploy War Room to GitHub Pages → Run workflow**).
+3. Faça push na branch `main` (ou dispare manualmente via **Actions → Deploy War Room to GitHub Pages → Run workflow**).
 4. Ao abrir o War Room publicado em `https://<usuario>.github.io/opspilot/`, clique no ícone de **engrenagem (`⚙`)** no cabeçalho para apontar a interface estática para a URL do seu servidor OpsPilot (já preparado com suporte a CORS e exposição de `X-Request-Id`).

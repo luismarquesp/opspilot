@@ -13,7 +13,7 @@ const WORKFLOW_PATH = path.join(
   REPO_ROOT,
   ".github",
   "workflows",
-  "deploy-pages.yml"
+  "deploy.yml"
 );
 const README_PATH = path.join(REPO_ROOT, "README.md");
 
@@ -33,7 +33,7 @@ jobs:
       missingArtifact.issues.some((i) => i.includes("upload-pages-artifact"))
     );
 
-    assert.equal(fs.existsSync(WORKFLOW_PATH), true, "deploy-pages.yml must exist");
+    assert.equal(fs.existsSync(WORKFLOW_PATH), true, "deploy.yml must exist");
     const workflowYaml = fs.readFileSync(WORKFLOW_PATH, "utf8");
     const buildResult = validatePagesWorkflowBuildAndDeploy(workflowYaml);
     assert.deepEqual(buildResult.issues, []);
@@ -50,7 +50,7 @@ concurrency:
     assert.equal(overprivileged.valid, false);
     assert.ok(overprivileged.issues.some((i) => i.includes("write-all")));
 
-    assert.equal(fs.existsSync(WORKFLOW_PATH), true, "deploy-pages.yml must exist");
+    assert.equal(fs.existsSync(WORKFLOW_PATH), true, "deploy.yml must exist");
     const workflowYaml = fs.readFileSync(WORKFLOW_PATH, "utf8");
     const govResult = validatePagesPermissionsAndGovernance(workflowYaml);
     assert.deepEqual(govResult.issues, []);

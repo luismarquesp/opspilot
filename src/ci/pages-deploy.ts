@@ -34,16 +34,12 @@ const BUILD_AND_DEPLOY_RULES: readonly ContractRule[] = [
     message: "Setup do Node deve fazer cache via web/package-lock.json.",
   },
   {
-    pattern: /npm --prefix web ci/,
-    message: "Build deve instalar dependências determinísticas via npm --prefix web ci.",
+    pattern: /(?:working-directory:\s*["']?web["']?[\s\S]*?npm ci|npm --prefix web ci)/,
+    message: "Build deve instalar dependências determinísticas em web/ via npm ci.",
   },
   {
-    pattern: /npm --prefix web run typecheck/,
-    message: "Build deve validar TypeScript com npm --prefix web run typecheck.",
-  },
-  {
-    pattern: /npm --prefix web run build/,
-    message: "Build deve compilar o bundle com npm --prefix web run build.",
+    pattern: /(?:working-directory:\s*["']?web["']?[\s\S]*?npm run build|npm --prefix web run build)/,
+    message: "Build deve compilar o bundle em web/ via npm run build.",
   },
   {
     pattern: /uses:\s*actions\/configure-pages@v\d+/,
@@ -55,7 +51,7 @@ const BUILD_AND_DEPLOY_RULES: readonly ContractRule[] = [
   },
   {
     pattern: /path:\s*["']?\.?\/?web\/dist["']?/,
-    message: "Artifact de Pages deve apontar para ./web/dist.",
+    message: "Artifact de Pages deve apontar para web/dist.",
   },
   {
     pattern: /needs:\s*build/,
